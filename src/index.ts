@@ -1,15 +1,22 @@
-import {map, Observer, range,fromEvent} from "rxjs"
+import {lorep_ipsumConstants} from "./constants/lorep_ipsum.constants";
+import {fromEvent} from "rxjs";
 
-const observer:Observer<any> = {
-    next: val => console.log('next: ',val),
-    error: err => console.log('error: ',err),
-    complete: () => console.log('complete')
-}
+const text = document.createElement('div');
+text.innerHTML = lorep_ipsumConstants;
+const body = document.querySelector('body');
+const progressBar = document.createElement('div');
+progressBar.setAttribute('class', 'progress-bar');
+body.append(text);
+body.append(progressBar);
 
-// range(1,5).pipe(map<number,string>(x => `${x*10}`)).subscribe(observer);
+//Streams
 
-const keyUp$ = fromEvent<KeyboardEvent>(document, 'keyup')
-    .pipe(
-        map(value => value.code)
-    );
-keyUp$.subscribe(val => console.log('next: ',val));
+const scroll$ = fromEvent(document,'scroll');
+// const scrollPorcentaje = (document.documentElement.scrollTop / (document.documentElement.scrollHeight - document.documentElement.clientHeight)) * 100;
+// progressBar.style.width = scrollPorcentaje + '%';
+const progress$ = scroll$.pipe(
+
+)
+progress$.subscribe(porcentaje => {
+    progressBar.style.width = `${porcentaje}'%'` ;
+});

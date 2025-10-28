@@ -1,18 +1,5 @@
-import { Observable, Observer} from 'rxjs';
-
-
-const observer: Observer<any> = {
-    next: function (value: any): void {
-        console.log('next: ',value)
-    },
-    error: function (err: any): void {
-        console.warn('err', err)
-    },
-    complete: function (): void {
-        console.info('completado')
-    }
-}
-
+import { Observable} from 'rxjs';
+import {observer} from "../helpers/observer";
 const interval$ = new Observable<number>(subs => {
     let interval = 0
     const count = setInterval(()=> {

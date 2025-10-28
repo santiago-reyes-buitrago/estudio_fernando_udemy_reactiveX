@@ -1,17 +1,5 @@
-import {Observable, Observer} from 'rxjs';
-
-
-const observer: Observer<any> = {
-    next: function (value: any): void {
-        console.log('next: ',value)
-    },
-    error: function (err: any): void {
-        console.log('err', err)
-    },
-    complete: function (): void {
-        console.log('completado')
-    }
-}
+import {Observable} from 'rxjs';
+import {observer} from "../helpers/observer";
 
 const obs$ = new Observable<string>(subscriber => {
     subscriber.next('hola')

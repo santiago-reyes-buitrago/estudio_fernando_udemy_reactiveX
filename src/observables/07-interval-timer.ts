@@ -1,11 +1,5 @@
-import {interval,timer, Observer} from "rxjs";
-
-
-const observer:Observer<any> = {
-    next: value => console.log('next', value),
-    error: value => console.log('error', value),
-    complete: () => console.log('complete'),
-}
+import {interval,timer} from "rxjs";
+import {observer} from "../helpers/observer";
 
 const today5 = new Date();
 today5.setSeconds(today5.getSeconds()+5)

@@ -1,17 +1,5 @@
-import { Observable, Observer,Subject} from 'rxjs';
-
-
-const observer: Observer<any> = {
-    next: function (value: any): void {
-        console.log('next: ',value)
-    },
-    error: function (err: any): void {
-        console.warn('err', err)
-    },
-    complete: function (): void {
-        console.info('completado')
-    }
-}
+import { Observable,Subject} from 'rxjs';
+import {observer} from "../helpers/observer";
 
 const intervalo$ = new Observable<number>(subs => {
     const intervalID = setInterval(() => subs.next(Math.random()),1000)

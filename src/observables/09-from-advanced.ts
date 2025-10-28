@@ -1,10 +1,5 @@
-import {of, from, Observer} from "rxjs";
-
-const observer:Observer<any> = {
-    next: val => console.log('next: ',val),
-    error: err => console.log('error: ',err),
-    complete: () => console.log('complete')
-}
+import {from} from "rxjs";
+import {observer} from "../helpers/observer";
 
 const MyGenerator = function*(){
     yield 1;

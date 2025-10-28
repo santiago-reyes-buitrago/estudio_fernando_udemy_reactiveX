@@ -1,17 +1,11 @@
 import {fromEvent} from "rxjs";
 
-const src1$ = fromEvent<MouseEvent|PointerEvent>(document,'click');
-const src2$ = fromEvent<KeyboardEvent>(document,'keyup');
-
-const observer = {
-    next: (value:any) => {
-        console.log(value);
-    }
-}
-
-src1$.subscribe(({x,y}) =>{
-    console.log(x,y);
-})
-src2$.subscribe(event => {
-    console.log(event.key)
-})
+const mousekey$ = fromEvent<MouseEvent|PointerEvent>(document,'click');
+export const keyUp$ = fromEvent<KeyboardEvent>(document, 'keyup');
+//
+// mousekey$.subscribe(({x,y}) =>{
+//     console.log(x,y);
+// })
+// keyUp$.subscribe(event => {
+//     console.log(event.key)
+// })

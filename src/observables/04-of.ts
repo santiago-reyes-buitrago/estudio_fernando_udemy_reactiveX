@@ -1,4 +1,5 @@
 import {of} from 'rxjs';
+import {observer} from "../helpers/observer";
 
 
 // const obs$ = of(1,2,3,4,5,6);
@@ -6,13 +7,5 @@ const obs$ = of<number[]>(1,2,3,4,5,6);
 // const obs$ = of([1,2],{a:1,b:2,c:3},true,Promise.resolve(true));
 
 console.log('inicio de un obs')
-obs$.subscribe({
-    next: (val:any) => {
-        console.log(val);
-    },
-    error: (val:any) => {},
-    complete: () => {
-        console.log('Terminado')
-    }
-})
+obs$.subscribe(observer)
 console.log('Fin de un obs')
