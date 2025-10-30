@@ -5,7 +5,8 @@
       "@helpers/*": ["src/helpers/*"],
       "@constants/*": ["src/constants/*"],
       "@interfaces/*": ["src/interfaces/*"],
-      "@functions/*": ["src/functions/*"]
+      "@functions/*": ["src/functions/*"],
+      "@observables/*": ["src/observables/*"]
     },
     /* Basic Options */
     // "incremental": true,                   /* Enable incremental compilation */

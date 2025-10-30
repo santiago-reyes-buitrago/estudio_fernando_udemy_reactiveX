@@ -1,8 +1,8 @@
 import {fromEvent} from "rxjs";
 
-const mousekey$ = fromEvent<MouseEvent|PointerEvent>(document,'click');
+export const mousekey$ = fromEvent<MouseEvent|PointerEvent>(document,'click');
 export const keyUp$ = fromEvent<KeyboardEvent>(document, 'keyup');
-//
+
 // mousekey$.subscribe(({x,y}) =>{
 //     console.log(x,y);
 // })

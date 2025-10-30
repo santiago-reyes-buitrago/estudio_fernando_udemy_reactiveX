@@ -17,7 +17,8 @@ module.exports = {
             "@helpers/*": path.resolve(__dirname, "src/helpers/*"),
             "@constants/*": path.resolve(__dirname, "src/constants/*"),
             "@interfaces/*": path.resolve(__dirname, "src/interfaces/*"),
-            "@functions/*": path.resolve(__dirname, "src/functions/*")
+            "@functions/*": path.resolve(__dirname, "src/functions/*"),
+            "@observables/*": path.resolve(__dirname, "src/observables/*")
         },
         extensions: [ '.tsx', '.ts', '.js' ]
     },
