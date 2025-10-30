@@ -1,0 +1,1 @@
+export interface CharacterInterface { tipo: string, nombre: string }

@@ -1,0 +1,1 @@
+export const totalReducer = (acc:number,curr:number) => acc + curr;

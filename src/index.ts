@@ -1,22 +1,32 @@
-import {lorep_ipsumConstants} from "./constants/lorep_ipsum.constants";
-import {fromEvent} from "rxjs";
+import {from, map, Observable, reduce, scan} from "rxjs";
+import {observer} from "@helpers/observer";
+import {ARRAY_NUMBERS} from "@constants/arrays.constants";
+import {totalReducer} from "@functions/accumulator.function";
+import {UserInterface} from "@interfaces/user.interface";
 
-const text = document.createElement('div');
-text.innerHTML = lorep_ipsumConstants;
-const body = document.querySelector('body');
-const progressBar = document.createElement('div');
-progressBar.setAttribute('class', 'progress-bar');
-body.append(text);
-body.append(progressBar);
+console.log('Reduce')
+from(ARRAY_NUMBERS).pipe(
+    reduce(totalReducer,0)
+).subscribe(observer)
+console.log('Scan')
+from(ARRAY_NUMBERS).pipe(
+    scan(totalReducer,0)
+).subscribe(observer)
 
-//Streams
+// Redux
 
-const scroll$ = fromEvent(document,'scroll');
-// const scrollPorcentaje = (document.documentElement.scrollTop / (document.documentElement.scrollHeight - document.documentElement.clientHeight)) * 100;
-// progressBar.style.width = scrollPorcentaje + '%';
-const progress$ = scroll$.pipe(
 
-)
-progress$.subscribe(porcentaje => {
-    progressBar.style.width = `${porcentaje}'%'` ;
-});
+const user: UserInterface[] = [
+    { id: 'fher', autenticado: false, token: null },
+    { id: 'fher', autenticado: true, token: 'ABC' },
+    { id: 'fher', autenticado: true, token: 'ABC123' },
+];
+
+const state$:Observable<UserInterface> = from( user ).pipe(
+    scan<UserInterface>( (acc:any, cur) => ({ ...acc, ...cur }))
+);
+const id$ = state$.pipe(
+    map( state => state.id )
+);
+
+id$.subscribe( console.log );
