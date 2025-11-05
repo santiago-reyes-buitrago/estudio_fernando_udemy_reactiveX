@@ -3,7 +3,6 @@ import {concatMap, take} from "rxjs";
 import {mousekey$} from "@observables/05-fromEvent";
 import {observer} from "@helpers/observer";
 
-interval$.pipe(take(3))
 mousekey$.pipe(
-    concatMap(() => interval$)
+    concatMap(() => interval$.pipe(take(3)))
 ).subscribe(observer)

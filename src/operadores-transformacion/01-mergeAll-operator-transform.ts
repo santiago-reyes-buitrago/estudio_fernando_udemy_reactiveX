@@ -15,7 +15,7 @@ const input$ = fromEvent<KeyboardEvent>(textInput, 'keyup').pipe(
     distinctUntilChanged<KeyboardEvent>(),
     debounceTime<KeyboardEvent>(1000),
     map<KeyboardEvent,string>(({target}: any) => target.value ),
-    map<string,Observable<ResponseGithubInterface>>((term: string) => ajax.getJSON(`${githubUrlApi}${term}`)),
+    map<string,Observable<ResponseGithubInterface>>((term: string) => ajax.getJSON(`${githubUrlApi}/search/users?q=${term}`)),
     mergeAll(),
     map<ResponseGithubInterface,GithubUserInterface[]>((data) => data.items)
 );
